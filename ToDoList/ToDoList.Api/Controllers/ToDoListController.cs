@@ -2,10 +2,12 @@
 
 namespace ToDoList.Api.Controllers {
 	[ApiController]
-	[Route("[controller]")]
+	[Route("api/todo")]
 	public class ToDoListController : Controller {
-		[HttpPost(Name = "todo")]
-		public IActionResult AddTask() {
+		[HttpPost("AddTask")]
+		public IActionResult AddTask([FromBody]string task)
+		{
+			var holita = task;
 			throw new NotImplementedException();
 		}
 	}

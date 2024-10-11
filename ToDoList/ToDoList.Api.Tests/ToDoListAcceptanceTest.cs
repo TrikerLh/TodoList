@@ -1,6 +1,9 @@
 using System.Net;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
 using FluentAssertions;
+using Microsoft.AspNetCore.Http.HttpResults;
 using NUnit.Framework.Internal;
 
 namespace ToDoList.Api.Tests {
@@ -42,7 +45,7 @@ namespace ToDoList.Api.Tests {
 		public async Task shouldAllowAddingTaskCompleteAndRetrieveTheList()
 		{
 			var taskDescription = "Write a test that fails";
-			await client.PostAsync("ToDoList", new StringContent(taskDescription, Encoding.UTF8, "application/json"));
+			await client.PostAsJsonAsync("api/todo/addtask", taskDescription);
 			taskDescription = "Write Production code that makes the test pass";
 			await client.PostAsync("todo", new StringContent(taskDescription, Encoding.UTF8, "application/json"));
 			taskDescription = "Refactor if there is opportunity";
