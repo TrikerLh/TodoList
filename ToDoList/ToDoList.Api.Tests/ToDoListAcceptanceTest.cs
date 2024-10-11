@@ -1,3 +1,5 @@
+using System.Net;
+using FluentAssertions;
 using NUnit.Framework.Internal;
 
 namespace ToDoList.Api.Tests {
@@ -28,11 +30,12 @@ namespace ToDoList.Api.Tests {
 		}
 
 		[Test]
-		public async Task Test1()
+		public async Task ExampleTest()
 		{
 			var response = await client.GetAsync("WeatherForecast");
 			var content = await response.Content.ReadAsStringAsync();
-			Assert.Pass();
+			response.StatusCode.Should().Be(HttpStatusCode.OK);
+
 		}
 	}
 }
