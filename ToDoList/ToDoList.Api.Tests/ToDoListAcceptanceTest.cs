@@ -42,7 +42,7 @@ namespace ToDoList.Api.Tests {
 		public async Task shouldAllowAddingTaskCompleteAndRetrieveTheList()
 		{
 			var taskDescription = "Write a test that fails";
-			await client.PostAsync("todo", new StringContent(taskDescription, Encoding.UTF8, "application/json"));
+			await client.PostAsync("ToDoList", new StringContent(taskDescription, Encoding.UTF8, "application/json"));
 			taskDescription = "Write Production code that makes the test pass";
 			await client.PostAsync("todo", new StringContent(taskDescription, Encoding.UTF8, "application/json"));
 			taskDescription = "Refactor if there is opportunity";
