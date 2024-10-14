@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 
 namespace ToDoList.Api.Tests {
@@ -13,6 +14,7 @@ namespace ToDoList.Api.Tests {
 				.AddEnvironmentVariables()
 				.Build();
 			baseApiUrl = integrationConfig["ApiUrl"];
+
 
 			builder.ConfigureAppConfiguration(configurationBuilder =>
 			{
@@ -29,5 +31,6 @@ namespace ToDoList.Api.Tests {
 			};
 			return client;
 		}
+
 	}
 }

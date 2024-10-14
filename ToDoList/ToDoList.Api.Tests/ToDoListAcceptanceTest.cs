@@ -45,7 +45,7 @@ namespace ToDoList.Api.Tests {
 		public async Task shouldAllowAddingTaskCompleteAndRetrieveTheList()
 		{
 			var taskDescription = "Write a test that fails";
-			await client.PostAsJsonAsync("api/todo/addtask", taskDescription);
+			await client.PostAsJsonAsync("api/todo/addtask", taskDescription); // esta es la forma que le pasa algo por el body
 			taskDescription = "Write Production code that makes the test pass";
 			await client.PostAsync("todo", new StringContent(taskDescription, Encoding.UTF8, "application/json"));
 			taskDescription = "Refactor if there is opportunity";
@@ -56,7 +56,7 @@ namespace ToDoList.Api.Tests {
 			var response = await client.GetAsync("todo");
 
 			var content = await response.Content.ReadAsStringAsync();
-			var expectedList = new List<string>
+			var expectedList = new List<string> //cambiar esto a un objeto cuando sepa de que va la cosa
 			{
 				"[X] 1. Write a test that fails",
 				"[ ] 2. Write Production code that makes the test pass",
