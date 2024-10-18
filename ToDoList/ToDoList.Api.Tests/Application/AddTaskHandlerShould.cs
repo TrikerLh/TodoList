@@ -13,6 +13,9 @@ using ToDoList.Api.Models;
 namespace ToDoList.Api.Tests.Application {
 	[TestFixture]
 	public class AddTaskHandlerShould {
+		private const string TaskDescription = "Task Description";
+		private const int TaskId = 1;
+
 		[SetUp]
 		public void Setup()
 		{
@@ -22,13 +25,12 @@ namespace ToDoList.Api.Tests.Application {
 		public void AddTasToRepository()
 		{
 			var taskRepository = Substitute.For<TaskRepository>();
-			var taskDescription = "Task Description";
 			var addTaskHandler = new AddTaskHandler(taskRepository);
-			taskRepository.NextId().Returns(1);
+			taskRepository.NextId().Returns(TaskId);
 
-			addTaskHandler.Execute(taskDescription);
+			addTaskHandler.Execute(TaskDescription);
 
-			var task = new ToDoTask(1, "Task Description");
+			var task = new ToDoTask(TaskId, TaskDescription);
 			taskRepository.Received(1).Store(task);
 		}
 
