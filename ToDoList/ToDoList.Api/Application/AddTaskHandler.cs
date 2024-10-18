@@ -1,16 +1,22 @@
-﻿using ToDoList.Api.Models;
+﻿
+using ToDoList.Api.Domain;
+using ToDoList.Api.Models;
 
 namespace ToDoList.Api.Application;
-
-public interface AddTaskHandler
+public class AddTaskHandler
 {
-    public ToDoTask Execute(string task);
-}
+	private readonly TaskRepository _repository;
 
-public class AddTaskFileHandler : AddTaskHandler
-{
-	public ToDoTask Execute(string task)
+	public AddTaskHandler(TaskRepository repository)
 	{
-		throw new NotImplementedException();
+		_repository = repository;
+	}
+
+	public virtual void Execute(string taskDescription)
+	{
+		var id = _repository.NextId();
+		var task = new ToDoTask(id, taskDescription);
+		_repository.Store(task);
+
 	}
 }

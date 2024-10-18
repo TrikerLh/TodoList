@@ -16,9 +16,9 @@ namespace ToDoList.Api.Controllers {
 		[HttpPost("AddTask")]
 		public IActionResult AddTask([FromBody]string task)
 		{
-			var entity = _addTaskHandler.Execute(task);
+			_addTaskHandler.Execute(task);
 
-			return Created();
+			return Ok();
 		}
 	}
 }
