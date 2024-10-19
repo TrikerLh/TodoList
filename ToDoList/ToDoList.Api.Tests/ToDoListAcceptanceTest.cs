@@ -33,6 +33,7 @@ namespace ToDoList.Api.Tests {
 			client = application.CreateHttpClient();
 		}
 
+		[Ignore("Example")]
 		[Test]
 		public async Task ExampleTest()
 		{
