@@ -1,11 +1,6 @@
 ﻿using FluentAssertions;
-using NSubstitute;
 using System.Net;
 using System.Net.Http.Json;
-using ToDoList.Api.Application;
-using ToDoList.Api.Controllers;
-using ToDoList.Api.Models;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ToDoList.Api.Tests.Controllers;
 

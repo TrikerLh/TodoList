@@ -1,10 +1,7 @@
 using System.Net;
-using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using FluentAssertions;
-using Microsoft.AspNetCore.Http.HttpResults;
-using NUnit.Framework.Internal;
 
 namespace ToDoList.Api.Tests {
 	[TestFixture]
