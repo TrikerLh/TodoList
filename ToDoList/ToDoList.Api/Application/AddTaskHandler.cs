@@ -14,7 +14,7 @@ public class AddTaskHandler
 
 	public virtual void Execute(string taskDescription)
 	{
-		var id = _repository.NextId();
+		var id = _repository.NextId().Result;
 		var task = new ToDoTask(id, taskDescription);
 		_repository.Store(task);
 

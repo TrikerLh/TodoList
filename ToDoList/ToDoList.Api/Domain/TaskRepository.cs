@@ -4,6 +4,6 @@ namespace ToDoList.Api.Domain;
 
 public interface TaskRepository
 {
-	public int NextId();
+	public Task<int>NextId();
 	public void Store(ToDoTask task);
 }
