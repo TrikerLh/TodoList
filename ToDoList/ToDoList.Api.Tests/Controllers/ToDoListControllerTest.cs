@@ -34,10 +34,7 @@ public class ToDoListControllerTest
     [Test]
     public async Task ShouldAddTask()
     {
-        var addTask = application.addTask;
         var taskDescription = "Any Task";
-        //addTask.Execute(taskDescription).Returns(new ToDoTask(1, "Any Task"));
-
 
         var response = await client.PostAsJsonAsync("api/todo/addtask", taskDescription);
 
