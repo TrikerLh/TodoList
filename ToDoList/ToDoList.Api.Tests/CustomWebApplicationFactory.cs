@@ -10,6 +10,7 @@ namespace ToDoList.Api.Tests {
 	internal class CustomWebApplicationFactory : WebApplicationFactory<Program> {
 		private string baseApiUrl;
 		public AddTaskHandler addTask = Substitute.For<AddTaskHandler>(new object[] { null });
+		public MarkTaskCompletedHandler MarkTaskCompletedHandler = Substitute.For<MarkTaskCompletedHandler>(new object[] { null });
 
 		protected override void ConfigureWebHost(IWebHostBuilder builder)
 		{
@@ -28,6 +29,7 @@ namespace ToDoList.Api.Tests {
 			builder.ConfigureServices(services => {
 				//SwapSingleton(services, ApiClientsMocks.FileSystemService);
 				SwapScoped(services, addTask);
+				SwapScoped(services, MarkTaskCompletedHandler);
 			});
 		}
 

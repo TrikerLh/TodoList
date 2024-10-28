@@ -16,6 +16,7 @@ namespace ToDoList.Api {
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 			builder.Services.AddScoped<AddTaskHandler>();
+			builder.Services.AddScoped<MarkTaskCompletedHandler>();
 			builder.Services.AddScoped<TaskRepository>(provider => new SQLTaskRepository(connectionString));
 
 			var app = builder.Build();

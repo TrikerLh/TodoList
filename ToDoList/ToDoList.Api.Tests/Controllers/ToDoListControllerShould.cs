@@ -1,11 +1,14 @@
 ﻿using FluentAssertions;
 using System.Net;
 using System.Net.Http.Json;
+using NSubstitute;
+using ToDoList.Api.Application;
+using System.Threading.Tasks;
 
 namespace ToDoList.Api.Tests.Controllers;
 
 [TestFixture]
-public class ToDoListControllerTest
+public class ToDoListControllerShould
 {
     private HttpClient client;
     private CustomWebApplicationFactory application;
@@ -40,6 +43,18 @@ public class ToDoListControllerTest
 
         response.StatusCode.Should().Be(HttpStatusCode.OK);
 
+    }
+
+    [Test]
+    public async Task MarkTaskCompleted()
+    {
+	    var taskId = 1;
+	    //var markTaskCompleteHandler = Substitute.For<MarkTaskCompletedHandler>(new object[] { null });
+
+		var response = await client.PostAsJsonAsync($"/api/todo/MarkTaskComplete?taskId={taskId}", true);
+
+		//markTaskCompleteHandler.Received().Execute(taskId, true);
+		response.StatusCode.Should().Be(HttpStatusCode.OK);
     }
 
 }

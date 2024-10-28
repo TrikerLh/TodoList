@@ -11,6 +11,10 @@ public class ToDoTask
 		Description = description;
 	}
 
+	public ToDoTask() {
+	}
+
+
 	protected bool Equals(ToDoTask other)
 	{
 		return Id == other.Id && Description == other.Description;
@@ -27,5 +31,10 @@ public class ToDoTask
 	public override int GetHashCode()
 	{
 		return HashCode.Combine(Id, Description);
+	}
+
+	public virtual void MarkCompleted()
+	{
+		throw new NotImplementedException();
 	}
 }

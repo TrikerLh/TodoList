@@ -15,7 +15,7 @@ namespace ToDoList.Api.Tests.Application {
 		}
 
 		[Test]
-		public void AddTasToRepository()
+		public void AddTaskToRepository()
 		{
 			var taskRepository = Substitute.For<TaskRepository>();
 			var addTaskHandler = new AddTaskHandler(taskRepository);

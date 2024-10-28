@@ -6,10 +6,12 @@ namespace ToDoList.Api.Controllers {
 	[Route("api/todo")]
 	public class ToDoListController : Controller {
 		private readonly AddTaskHandler _addTaskHandler;
+		private readonly MarkTaskCompletedHandler _markTaskCompletedHandler;
 
-		public ToDoListController(AddTaskHandler addTaskHandler)
+		public ToDoListController(AddTaskHandler addTaskHandler, MarkTaskCompletedHandler markTaskCompletedHandler)
 		{
 			_addTaskHandler = addTaskHandler;
+			_markTaskCompletedHandler = markTaskCompletedHandler;
 		}
 
 		[HttpPost("AddTask")]
@@ -19,5 +21,14 @@ namespace ToDoList.Api.Controllers {
 
 			return Ok();
 		}
+
+		[HttpPost("MarkTaskComplete")]
+		public IActionResult MarkTaskCompleted([FromQuery] int taskId, [FromBody] bool done)
+		{
+			_markTaskCompletedHandler.Execute(taskId, done);
+
+			return Ok();
+		}
+
 	}
 }
